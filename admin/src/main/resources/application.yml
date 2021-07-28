@@ -1,1 +1,39 @@
-
+server:
+  port: 8080
+spring:
+  application:
+    name: admin
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/user
+    username: root
+    password: Root@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 3
+      max-active: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+  redis:
+    mode: single
+    database: 0
+    host: 36.134.62.95
+    port: 6378
+    password: QWEzxc@987
+    connect-timeout: 10000
+    timeout: 3000
+    client-name: ${spring.application.name}
+    idleConnectionTimeout: 10000
+    masterName: admin
+    address: redis://${spring.redis.host}:${spring.redis.port}
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 3a359807d0bbde2275ca
+            client-secret: b5336bb0fe8662271f12422e54a4dae8a38d04d5
